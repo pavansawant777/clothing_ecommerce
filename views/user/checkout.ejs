@@ -1,0 +1,140 @@
+<%-include("navbar.ejs")%>
+<form action="/confirm_order" method="post">
+<div class="py-5">
+    <div class="container">
+      <div class="row g-4 p-5" style="background-color: #F8F9FA;">
+        <div class="col-lg-8 col-12 pe-lg-5">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item border-0 mb-4">
+              <div id="flush-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body p-5 bg-light">
+                  <div class="mb-4">
+                    <h5 class="fw-bold pb-2">Enter your name and address:</h5>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="InputFirstName1" class="form-label"> Full Name</label>
+                        <input type="text" class="form-control " id="InputFirstName1" placeholder="Enter Your Name" name="full_name">
+                      </div>
+                     
+                      <div class="col-md-6">
+                        <label for="InputMobileNo" class="form-label">Mobile No</label>
+                        <input type="number" class="form-control " id="InputMobileNo" placeholder="Enter Your number" name="mobile_no">
+                      </div>
+                     
+                      <div class="col-md-6">
+                        <label class="form-label">Street/Landmark</label>
+                        <input type="text" name="street_landmark" class="form-control"/>
+                      </div>
+
+
+                      <div class="col-md-6">
+                        <label class="form-label">City</label>
+                        <input type="text" name="city" class="form-control"/>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label">District</label>
+                        <input type="text" name="district" class="form-control"/>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">State</label>
+                        <input type="text" name="state" class="form-control"/>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Pincode</label>
+                        <input type="number" name="pincode" class="form-control" />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Country</label>
+                        <input type="text" name="country" class="form-control" value="India" readonly/>
+                      </div>
+                      <div class="col-md-12">
+                        <label class="form-label">Payment Mode</label>
+                        <select name="payment_mode" class="form-select">
+                            <option value="online">Online: Cards/UPI/Net Banking</option>
+                            <option value="cod">Cash On Delivery</option>
+                        </select>
+                      </div>
+
+
+
+                      
+                    </div>
+                  </div>
+                  <div>
+                    
+                    <form class="row g-3">
+                     
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item border-0 mb-4">
+           
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body p-5 bg-light">
+                  <div class="border-bottom pb-3">
+                    <h5 class="fw-bold pb-2">When would you like to get your order?</h5>
+                    <div class="border border-dark d-flex align-items-center justify-content-between p-3">
+                      <p class="mb-0">Arrives Wed, 26 Jul - Fri, 11 Aug</p>
+                      <p class="text-secondary-emphasis mb-0">₹4,678.00</p>
+                    </div>
+                  </div>
+                  <div class="py-3">
+                    <div class="row">
+                      <div class="col-4">
+                        <img src="/user_assets/img/whats-new/new-3.jpg" alt="cart-1" class="img-fluid">
+                      </div>
+                      <div class="col-4">
+                        <img src="/user_assets/img/whats-new/new-4.jpg" alt="cart-2" class="img-fluid">
+                      </div>
+                      <div class="col-4">
+                        <img src="/user_assets/img/whats-new/new-6.jpg" alt="cart-3" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="text-secondary-emphasis pb-3">This is an international shipment requiring customs clearance</h6>
+                  <a href="#" class="btn btn-dark rounded-0 py-2 w-100" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-controls="flush-collapseThree" aria-expanded="false">Continue</a>
+                </div>
+              </div>
+            </div>
+           
+           
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="bg-light p-5">
+            <h4 class="fw-bold pb-3">Summary </h4>
+           
+            <div class="mb-4">
+              <div class="d-flex align-items-center justify-content-between text-secondary-emphasis mb-1">
+                <p class="mb-0">Order value</p>
+                <p class="mb-0">₹<%-total%></p>
+              </div>
+              <div class="d-flex align-items-center justify-content-between text-secondary-emphasis mb-2">
+                <p class="mb-0">Delivery</p>
+                <p class="mb-0">FREE</p>
+              </div>
+              <div class="d-flex align-items-center justify-content-between border-top pt-4 mt-4">
+                <h4 class="fw-bold mb-0">Total</h4>
+                <h4 class="fw-bold mb-0">₹<%-total%></h4>
+              </div>
+            </div>
+            <button class="btn btn-dark fw-bold fs-7 rounded-0 shadow-none border-0 px-5 py-3 text-uppercase w-100">
+              <span class="px-3"> Place Order </span>
+            </button>
+          </div>
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<%-include("footer.ejs")%>
+
+
+
+<!-- SELECT product_price,quantity,(product_price*quantity)FROM product ,cart WHERE product.product_id=cart.product_id -->

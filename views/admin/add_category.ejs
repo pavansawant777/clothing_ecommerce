@@ -1,0 +1,25 @@
+<%-include("navbar.ejs")%>
+<form action="/admin/save_category" method="post">
+<div class="container card card-body">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Add Category</h4>
+        </div>
+        <div class="col-md-12 mb-3">
+            Category Name
+            <input type="text" name="category_name" class="form-control">
+        </div>
+        <div class="col-md-12 mb-3">
+            Category Details
+            <textarea  name="category_details" class="form-control">
+            </textarea>
+            </div>
+            <div class="col-md-12 text-center" >
+            <button class="btn btn-primary">Save Category</button>
+            </div>
+        
+
+    </div>
+</div>
+</form>
+<%-include("footer.ejs")%>

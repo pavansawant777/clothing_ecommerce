@@ -1,0 +1,29 @@
+<%-include("navbar.ejs")%>
+<form action="/admin/save_brand" method="post" enctype="multipart/form-data">
+<div class="container card card-body">
+ <div class="row">
+
+ <div class="col-md-12">
+ <h4>Add Brand</h4>
+</div>
+
+       <div class="col-md-6 mb-3">     
+         Brand Name    
+        <input type="text" name="brand_name" class="form-control">
+        </div>
+
+        
+          <div class="col-md-12 mb-3">
+            Brand Details
+            <textarea  name="brand_details" class="form-control">
+            </textarea>
+            </div>
+            <div class="col-md-12 text-center" >
+            <button class="btn btn-primary">Save Brand</button>
+            </div>
+        
+
+ </div>
+</div>
+</form>
+<%-include("footer.ejs")%>

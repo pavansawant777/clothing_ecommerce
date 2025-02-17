@@ -1,0 +1,123 @@
+
+
+<%-include("navbar.ejs")%>
+<br>
+
+
+
+<style>
+
+.swiper-slide{
+
+  max-height: 600px;
+  overflow: hidden;
+}
+
+
+
+</style>
+<form action="/save_in_cart" method="post" >
+  <input type="hidden" name="product_id" value="<%-product_info.product_id%>">
+<div>
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-lg-6 col-12">
+       
+          <div class="swiper product-view-slider">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <img src="/uploads/<%- product_info.product_image1 %>" alt="view-1" class="img-fluid"style="width: 70%;position: relative;left:15%;">
+              </div>
+              <% if (product_info.product_image2){ %>
+              <div class="swiper-slide">
+                <img src="/uploads/<%-product_info.product_image2 %>" alt="view-2" class="img-fluid"style="width: 70%;position: relative;left:15%;">
+              </div>
+              <% } %>
+              <% if (product_info.product_image3){ %>
+                <div class="swiper-slide">
+                  <img src="/uploads/<%-product_info.product_image3 %>" alt="view-3" class="img-fluid"style="width: 70%;position: relative;left:15%;">
+                </div>
+                <% } %>
+                <% if (product_info.product_image4){ %>
+                    <div class="swiper-slide">
+                      <img src="/uploads/<%-product_info.product_image4 %>" alt="view-4" class="img-fluid"style="width: 70%;position: relative;left:15%;">
+                    </div>
+                    <% } %>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="sticky-sidebar p-5">
+            <div class="mb-4">
+              <p class="text-secondary-emphasis mb-2"><%-product_info.category_name %></p>
+              <h1 class="fw-bold"><%-product_info.product_name%></h1>
+              <!-- <p class="text-secondary-emphasis pb-2">The fibre is produced using reclaimed cottom waste, mainly from the manufacture of other cotton garments, thus reducing the production of virgin raw materials and etc...</p> -->
+              <h2 class="fw-bold mb-0">₹ <%-product_info.product_price %><span class="text-secondary-emphasis fw-normal fs-6"></span>
+              </h2>
+            </div>
+            <div class="d-flex align-items-center gap-4 mb-5 product-detail-select-size">
+              <div>
+                <h6 class="fw-bold pb-1">  Select Size</h6>
+                <div class="d-flex align-items-center gap-3">
+                  <div>
+                    <input type="radio" class="btn-check" name="size" id="btnradio1ss" checked value="S">
+                    <label class="btn btn-outline-dark rounded-0 border-2" for="btnradio1ss">S</label>
+                  </div>
+                  <div>
+                    <input type="radio" class="btn-check" name="size" id="btnradio2ss" checked value="M">
+                    <label class="btn btn-outline-dark rounded-0 border-2" for="btnradio2ss">M</label>
+                  </div>
+                  <div>
+                    <input type="radio" class="btn-check" name="size" id="btnradio3" checked value="XL">
+                    <label class="btn btn-outline-dark rounded-0 border-2" for="btnradio3">XL</label>
+                  </div>
+                  <div>
+                    <input type="radio" class="btn-check" name="size" id="btnradio4" checked value="XXL">
+                    <label class="btn btn-outline-dark rounded-0 border-2" for="btnradio4">XXL</label>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h6 class="fw-bold pb-1">Select Quantity</h6>
+                <div class="btn-group border border-2 border-dark rounded-0 number w-50">
+                  <a class="btn btn-outline-dark rounded-0 border-0 border-end border-2 border-dark minus">
+                    <i class="ri-subtract-fill"></i>
+                  </a>
+                  <input class="form-control border-0 rounded-0 text-center p-0 count" type="text" value="1" name="quantity">
+                  <a class="btn btn-outline-dark rounded-0 border-0 border-start border-2 border-dark plus">
+                    <i class="ri-add-fill"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <% if (in_cart.length>0){%>
+            <div class="row g-4 mb-5">
+              <div class="col">
+                <a  href="/cart" class="btn btn-outline-dark py-2 rounded-0 border-2 w-100">Continue With Cart</a>
+              </div>
+            </div>
+<% } else{ %>
+  <div class="row g-4 mb-5">
+    <div class="col">
+      <button class="btn btn-outline-dark py-2 rounded-0 border-2 w-100">ADD TO CART</button>
+    </div>
+  </div>
+  
+  
+  
+  
+ <% } %>
+            <div class="mb-4">
+              <p class="text-secondary-emphasis"><%-product_info.product_details%></p>
+              
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+  <%-include("footer.ejs")%>

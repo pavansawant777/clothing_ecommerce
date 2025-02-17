@@ -1,0 +1,62 @@
+<%-include("navbar.ejs")%>
+        <div class="container card card-body">
+        <div class="row">
+        <div class="col-md-12">
+         <h4>Product List</h4>
+         </div>
+         <div class="col-md-12 table-responsive" >
+         <table class="table">
+         <tr>
+                <th>Action</th>
+                <th>SrNo</th>
+                <th>Product&nbsp;Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Image</th>
+                <th>Size</th>
+            </tr>
+           <% product.map((row,i)=>{ %>
+            <tr>
+              <td style="white-space:nowrap;">
+                <a href="/admin/edit_product/<%-row.product_id%>">
+                   <button class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></i></button> 
+                </a>
+                <a href="/admin/delete_product/<%-row.product_id%>" onclick="return confirm('Are You Sure..?')">
+                    <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                </a>
+
+                </td>
+                <td><%-i+1%></td>
+                <td><%-row.product_name %></td>
+                <td><%-row.product_price %></td>
+                <td><%-row.category_name %></td>
+                <td><%-row.brand_name %></td>
+                <td><%-row.product_type %></td>
+                <td>
+                  <button onclick="open_image('<%-row.product_image1 %>')">Open</button>
+                </td>
+               
+                <td><%-row.product_size %></td>
+              </tr>
+
+           <% }) %>
+             </table>
+             </div>
+             </div>
+             </div>
+         <script>
+          function open_image(img_path)
+          {
+            window.open('/uploads/'+img_path,"","window-300px,height-300px");
+          }
+         </script>
+
+<%-include("footer.ejs")%>
+
+
+
+
+
+ 

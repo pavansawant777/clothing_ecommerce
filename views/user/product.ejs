@@ -1,0 +1,55 @@
+<%- include("navbar.ejs") %>
+<div class="py-5">
+  <div class="container py-4">
+    <div>
+      <div class="row align-items-center justify-content-between mb-3">
+        <div class="col-auto">
+          <h4 class="fw-bold mb-0">All Products</h4>
+        </div>
+        <div class="col-auto">
+          <div class="d-flex align-items-center gap-3">
+            <a href="#" class="btn btn-outline-dark btn-sm rounded-0 border-2 d-flex align-items-center">
+              FILTERS <i class="ri-filter-2-fill ms-4"></i>
+            </a>
+            <select class="form-select form-select-sm rounded-0 border-2 border-dark" aria-label="Default select example">
+              <option selected="">SORT BY</option>
+              <option value="1">POPULARITY</option>
+              <option value="2">AVERAGE RATING</option>
+              <option value="3">LOW TO HIGH</option>
+              <option value="4">HIGH TO LOW</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-4 row-cols-1 g-6">
+        <% product.map((row, i) => { %>
+        <div class="col">
+          <div class="card bg-transparent border-0 rounded-0 h-100 product">
+            <div class="position-relative">
+              <img src="/uploads/<%- row.product_image1 %>" class="card-img-top rounded-0">
+              <div class="overlay position-absolute start-0 end-0 top-0 bottom-0 opacity-0 bg-dark bg-opacity-75 d-flex align-items-center h-100">
+                <div class="d-flex align-items-center gap-3 position-absolute bottom-0 w-100 p-3">
+                  <a href="/add_to_cart/<%- row.product_id %>" class="btn btn-light btn-sm rounded-0 border-2 d-flex align-items-center justify-content-between w-100" style="position: relative; z-index: 5;">
+                    <i class="ri-shopping-bag-line"></i>
+                    <div>ADD TO CART</div>
+                    <span class="px-1"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body pb-0 px-0">
+              <h6 class="card-title text-truncate mb-1"><%- row.product_name %></h6>
+              <p class="card-text text-secondary-emphasis mb-0">Size:<%- row.product_size %></p>
+            </div>
+            <div class="card-footer bg-transparent border-0 px-0">
+              <h6 class="mb-0">₹ <%-row.product_price %></h6>
+            </div>
+            <a href="/product_details/<%- row.product_id %>" class="stretched-link"></a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("footer.ejs") %>

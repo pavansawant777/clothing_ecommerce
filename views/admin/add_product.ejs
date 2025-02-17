@@ -1,0 +1,147 @@
+<!-- product =>
+product_name
+product_price
+product_purchase_price
+product_brand
+product_category
+product_details
+product_size
+product_color
+product_image1
+product_image2
+product_image3
+product_image4 
+ create form with same as above design
+-->
+
+
+<!-- CREATE TABLE product(
+product_id INT PRIMARY KEY AUTO_INCREMENT,
+product_name VARCHAR(100),
+product_price INT,
+product_purchase_price INT,
+product_brand INT,
+product_category INT,
+product_details TEXT,
+product_size VARCHAR(100),
+product_color VARCHAR(20)
+product_image1 TEXT,
+product_image2 TEXT,
+product_image3 TEXT,
+product_image4 TEXT
+
+) -->
+
+
+<%-include("navbar.ejs")%>
+
+<form action="/admin/save_product" method="post" enctype="multipart/form-data">
+        <div class="container card card-body">
+         <div class="row">
+    
+          <div class="col-md-12">
+           <h4>Add Product</h4>
+           </div>
+    
+              <div class="col-md-6 mb-3">     
+               Product Name
+               <input type="text" name="product_name" class="form-control">
+               </div>
+    
+               <div class="col-md-6 mb-3">     
+                Product Price
+               <input type="price" name="product_price" class="form-control">
+               </div>
+
+              
+               <div class="col-md-6 mb-3">    
+                Product Purchase Price 
+               <input type="number" name="product_purchase_price" class="form-control">
+               </div>
+    
+            
+                 <div class="col-md-6 mb-3">     
+                   Product Brand
+                  <label type="text" for="product_brand" class="form-label"></label>
+                  <select  name="product_brand_id" required class="form-select">
+                  <option selected disabled value="">Select Brand</option>
+                   <% brand.map((row,i)=>{ %>
+                  <option value="<%-row.brand_id%>"><%-row.brand_name%></option>
+                   <% })%>
+                   </select>
+                   </div>
+     
+              
+                       <div class="col-md-6 mb-3">     
+                        Product Category
+                        <label  for="product_category" class="form-label"></label>
+                        <select  name="product_category_id" required class="form-select">
+                        <option selected disabled value="">Select Category</option>
+                         <% cats.map((row,i)=>{ %>
+                         <option value="<%-row.category_id%>"><%-row.category_name%></option>
+                         <% })%>
+                        </select>
+                        </div>
+         
+   
+                       <div class="col-md-6 mb-3">     
+                         Product type
+                        <label for="type"  class="form-label"></label>
+                        <select name="product_type" class="form-select">
+                            <option>Mens</option>
+                            <option>Women</option>
+                            <option>Kids</option>
+                            <option>Others</option>
+                           </select>
+                           </div>
+
+
+                
+                       <div class="col-md-12 mb-3">     
+                        Product Details
+                        <textarea type="text" name="product_details" class="form-control"></textarea>
+                        </div>
+             
+                      
+                          <div class="col-md-6 mb-3">     
+                            Product Size
+                            <input type="size" name="product_size" class="form-control">
+                            </div>
+                 
+                          
+                              <div class="col-md-6 mb-3">     
+                                Product Color
+                                <input type="color" name="product_color" class="form-control">
+                                </div>
+                     
+                              
+                                <div class="col-md-6 mb-3">     
+                                    Product Image1
+                                    <input type="file" name="product_image1" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">     
+                                        Product Image2
+                                        <input type="file" name="product_image2" class="form-control">
+                                        </div>
+                         
+                                        <div class="col-md-6 mb-3">     
+                                            Product Image3
+                                            <input type="file" name="product_image3" class="form-control">
+                                            </div>
+
+
+                                              <div class="col-md-6 mb-3">     
+                                                Product Image4
+                                                <input type="file" name="product_image4" class="form-control">
+                                                </div>
+                                                                 
+                 <div class="col-md-12 text-center" >
+                <button class="btn btn-primary">Save Product</button>
+                </div>
+            
+    
+     </div>
+    </div>
+    </form>
+<%-include("footer.ejs")%>

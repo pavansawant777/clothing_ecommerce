@@ -1,0 +1,138 @@
+<%- include("navbar.ejs") %>
+<div class="container card card-body">
+  <h4>Edit Product</h4>
+  <form action="/admin/update_product/<%= product.product_id %>" method="POST" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="product_name">Product Name</label>
+          <input
+            type="text"
+            id="product_name"
+            name="product_name"
+            class="form-control"
+            value="<%= product.product_name %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="product_price">Price</label>
+          <input
+            type="number"
+            id="product_price"
+            name="product_price"
+            class="form-control"
+            value="<%= product.product_price %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="product_purchase_price">Purchase Price</label>
+          <input
+            type="number"
+            id="product_purchase_price"
+            name="product_purchase_price"
+            class="form-control"
+            value="<%= product.product_purchase_price %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="product_category_id">Category</label>
+          <select id="product_category_id" name="product_category_id" class="form-control" required>
+            <% categories.forEach((cat) => { %>
+              <option value="<%= cat.category_id %>" 
+                <%= product.product_category_id === cat.category_id ? "selected" : "" %>>
+                <%= cat.category_name %>
+              </option>
+            <% }); %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="product_brand_id">Brand</label>
+          <select id="product_brand_id" name="product_brand_id" class="form-control" required>
+            <% brands.forEach((brand) => { %>
+              <option value="<%= brand.brand_id %>" 
+                <%= product.product_brand_id === brand.brand_id ? "selected" : "" %>>
+                <%= brand.brand_name %>
+              </option>
+            <% }); %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="product_type">Type</label>
+          <input
+            type="text"
+            id="product_type"
+            name="product_type"
+            class="form-control"
+            value="<%= product.product_type %>"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="product_size">Size</label>
+          <input
+            type="text"
+            id="product_size"
+            name="product_size"
+            class="form-control"
+            value="<%= product.product_size %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="product_color">Color</label>
+          <input
+            type="text"
+            id="product_color"
+            name="product_color"
+            class="form-control"
+            value="<%= product.product_color %>"
+          />
+        </div>
+        <div class="form-group">
+          <label>Current Images</label>
+          <div>
+            <% if (product.product_image1) { %>
+              <img src="/uploads/<%= product.product_image1 %>" alt="Image1" style="height: 80px; margin-right: 10px;" />
+              <input type="hidden" name="existing_image1" value="<%= product.product_image1 %>" />
+            <% } %>
+            <% if (product.product_image2) { %>
+              <img src="/uploads/<%= product.product_image2 %>" alt="Image2" style="height: 80px; margin-right: 10px;" />
+              <input type="hidden" name="existing_image2" value="<%= product.product_image2 %>" />
+            <% } %>
+            <% if (product.product_image3) { %>
+              <img src="/uploads/<%= product.product_image3 %>" alt="Image3" style="height: 80px; margin-right: 10px;" />
+              <input type="hidden" name="existing_image3" value="<%= product.product_image3 %>" />
+            <% } %>
+            <% if (product.product_image4) { %>
+              <img src="/uploads/<%= product.product_image4 %>" alt="Image4" style="height: 80px; margin-right: 10px;" />
+              <input type="hidden" name="existing_image4" value="<%= product.product_image4 %>" />
+            <% } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="product_image1">Upload New Image 1</label>
+          <input type="file" id="product_image1" name="product_image1" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="product_image2">Upload New Image 2</label>
+          <input type="file" id="product_image2" name="product_image2" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="product_image3">Upload New Image 3</label>
+          <input type="file" id="product_image3" name="product_image3" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="product_image4">Upload New Image 4</label>
+          <input type="file" id="product_image4" name="product_image4" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Update Product</button>
+    <a href="/admin/product_list" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+<%- include("footer.ejs") %>

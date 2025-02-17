@@ -1,0 +1,40 @@
+<%- include("navbar.ejs") %>
+
+<div class="container bg-white">
+    <h1 class="mb-4 text-center">Delivered Orders</h1>
+    
+    <!-- Table for Delivered Orders -->
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" class="text-white">#</th>
+                <th scope="col" class="text-white">Order ID</th>
+                <th scope="col" class="text-white">Customer</th>
+                <th scope="col" class="text-white">Date</th>
+                <th scope="col" class="text-white">Total Amount</th>
+                <th scope="col" class="text-white">Payment Status</th>
+                <th scope="col" class="text-white">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% delivered_orders.map((row, i) => { %>
+                <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td>#<%- row.order_id %></td>
+                    <td><%- row.full_name %></td>
+                    <td><%- row.order_date %></td>
+                    <td>&#8377; <%- row.total %></td>
+                    <td><%- row.payment_status %></td>
+                    <td>
+                        <!-- Action Buttons -->
+                        <a href="/admin/order_details/<%- row.order_id %>">
+                            <button class="btn btn-primary btn-sm">Details</button>
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include("footer.ejs") %>

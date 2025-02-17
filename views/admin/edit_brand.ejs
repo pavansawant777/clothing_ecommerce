@@ -1,0 +1,23 @@
+<%- include("navbar.ejs") %>
+
+<div class="container card card-body">
+    <h4>Edit Brand</h4>
+    <form action="/admin/update_brand/<%- brand.brand_id %>" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="brand_name">Brand Name</label>
+            <input type="text" id="brand_name" name="brand_name" class="form-control" value="<%- brand.brand_name %>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="brand_details">Brand Details</label>
+            <textarea id="brand_details" name="brand_details" class="form-control" required><%- brand.brand_details %></textarea>
+        </div>
+
+       
+
+        <button type="submit" class="btn btn-success">Update Brand</button>
+        <a href="/admin/brand_list" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<%- include("footer.ejs") %>

@@ -1,0 +1,46 @@
+<%-include("navbar.ejs")%>
+
+
+<div class="container card card-body">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Brand List</h4>
+        </div>
+        <div class="col-md-12">
+           <table class="table">
+            <tr>
+                <th>Action</th>
+                <th>SrNo</th>
+                <th>Brand&nbsp;Name</th>
+                <th>Brand Details</th>
+
+            </tr>
+            <% brand.map((row,i)=>{%>
+              <tr>
+                <td>
+                <a href="/admin/edit_brand/<%- row.brand_id %>">
+                    <button class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </a>
+
+                <!-- Delete Button -->
+                <a href="/admin/delete_brand/<%- row.brand_id %>" onclick="return confirm('Are you sure you want to delete this brand?')">
+                    <button class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </a>
+                </td>
+                <td><%-i+1%></td>
+                <td><%-row.brand_name%></td>
+               
+                <td><%-row.brand_details%></td>
+              </tr>
+           <%})%>
+           </table>
+        </div>
+        
+        </div>
+        </div>
+        
+<%-include("footer.ejs")%>

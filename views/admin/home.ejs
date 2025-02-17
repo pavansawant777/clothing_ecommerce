@@ -1,0 +1,70 @@
+<%-include("navbar.ejs")%>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+const xValues = [ <%-"'"+xValues.join("','")+"'"%>];
+const yValues = [ <%-yValues.join(",")%>];
+
+
+
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+    label:'sales in Rs',
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: {
+        beginAtZero:true
+    }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
+
+<div class="card col-md-4">
+  
+<div class="card-header mb-0 pb-0">Pending Orders</div>
+<div class="card-body"><h2 class="mb-0 mt-2"><%-pending_orders.ttl%>Orders</h2></div>
+</div>
+
+
+<br><br>
+<div class="card col-md-4">
+  
+    <div class="card-header mb-0 pb-0">Pending Order Bills</div>
+    <div class="card-body">
+    <h2 class="mb-0 mt-2"> &#8377; <%-pending_order_paid_amount.ttl %>Paid</h2><br>
+   <h2 class="mb-0 mt-2">&#8377; <%-pending_order_unpaid_amount.ttl %>UnPaid</h2>
+    </div>
+
+    </div>
+
+
+    
+
+<%-include("footer.ejs")%>
